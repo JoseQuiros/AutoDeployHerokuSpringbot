@@ -1,2 +1,2 @@
 # Project_2_Angular_SpringBoot
-Api elaborada en Java Springbot hosteada en Heroku
+Api en Java Springbot deploy and hosting with Heroku
