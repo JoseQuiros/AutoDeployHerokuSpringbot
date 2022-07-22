@@ -16,7 +16,7 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public List<?> getAllUsers() { return repository.getAllUsers();
+    public List<Users> getAllUsers() { return repository.getAllUsers();
     }
 
     //From the stored procedure

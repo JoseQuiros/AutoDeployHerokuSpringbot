@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer> {
 
-    @Query(value = "GetAllUser", nativeQuery = true)
-    List<?> getAllUsers();
+    @Query(value = "GetAllUsers", nativeQuery = true)
+    List<Users> getAllUsers();
 
     @Query(value = "{ call GetUser(:IDuser)}", nativeQuery = true) Users getUserById(@Param("IDuser") Integer id);
 
