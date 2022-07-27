@@ -6,8 +6,12 @@ import javax.persistence.*;
 @Table(name = "Vehicle")
 @NamedStoredProcedureQuery(name = "Vehicle.getAllVehicles", procedureName = "GetAllVehicle")
 
-@NamedStoredProcedureQuery(name = "Users.getVehicleById",procedureName = "GetVehicle", parameters = {
+@NamedStoredProcedureQuery(name = "Vehicle.getVehicleById",procedureName = "GetVehicle", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDvehicle", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Vehicle.getVehicleByClient",procedureName = "GetVehicleByClient", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDclient", type = Integer.class)
 })
 
 @NamedStoredProcedureQuery(name = "Vehicle.insertVehicle",procedureName = "InsertVehicle", parameters = {

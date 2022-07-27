@@ -3,6 +3,38 @@ package com.example.labspringboot.domain;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "ParkingSlot")
+@NamedStoredProcedureQuery(name = "Parkingslot.getAlLParkingslots", procedureName = "GetAllParkingSlots")
+
+@NamedStoredProcedureQuery(name = "Parkingslot.getParkingslotById",procedureName = "GetParkingSlot", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDparkingSlot", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Parkingslot.getParkingSlotInfo",procedureName = "GetParkingSlotInfo", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDparkingSlot", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDtime", type = String.class)
+})
+
+@NamedStoredProcedureQuery(name = "Parkingslot.getSlotsByParking",procedureName = "GetSlotsByParking", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDparking", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Parkingslot.insertParkingslot",procedureName = "InsertParkingSlot", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparking", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDtypeVehicle", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Number", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "PreferentialSlot", type = Character.class)
+})
+
+@NamedStoredProcedureQuery(name = "Parkingslot.updateParkingslot",procedureName = "UpdateParkingSlot", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparkingSlot", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDtypeVehicle", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "PreferentialSlot", type = Character.class)
+})
+
+@NamedStoredProcedureQuery(name = "Parkingslot.deleteParkingslot",procedureName = "DeleteParkingSlot", parameters =
+        {@StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparkingslot", type = Integer.class)})
+
 public class Parkingslot {
 
     @Id
@@ -10,10 +42,10 @@ public class Parkingslot {
     private int idparkingslot;
     @ManyToOne
     @JoinColumn(name = "idparking")
-    private Parking idparking;
+    private Parking parking;
     @ManyToOne
     @JoinColumn(name = "idtypevehicle")
-    private Typevehicle idtypevehicle;
+    private Typevehicle typevehicle;
     private int number;
     private char preferentialslot;
     private  char state;
@@ -21,10 +53,10 @@ public class Parkingslot {
     public Parkingslot() {
     }
 
-    public Parkingslot(int idparkingslot, Parking idparking, Typevehicle idtypevehicle, int number, char preferentialslot, char state) {
+    public Parkingslot(int idparkingslot, Parking parking, Typevehicle typevehicle, int number, char preferentialslot, char state) {
         this.setIdparkingslot(idparkingslot);
-        this.setIdparking(idparking);
-        this.setIdtypevehicle(idtypevehicle);
+        this.setParking(parking);
+        this.setTypevehicle(typevehicle);
         this.setNumber(number);
         this.setPreferentialslot(preferentialslot);
         this.setState(state);
@@ -38,20 +70,20 @@ public class Parkingslot {
         this.idparkingslot = idparkingslot;
     }
 
-    public Parking getIdparking() {
-        return idparking;
+    public Parking getParking() {
+        return parking;
     }
 
-    public void setIdparking(Parking idparking) {
-        this.idparking = idparking;
+    public void setParking(Parking parking) {
+        this.parking = parking;
     }
 
-    public Typevehicle getIdtypevehicle() {
-        return idtypevehicle;
+    public Typevehicle getTypevehicle() {
+        return typevehicle;
     }
 
-    public void setIdtypevehicle(Typevehicle idtypevehicle) {
-        this.idtypevehicle = idtypevehicle;
+    public void setTypevehicle(Typevehicle typevehicle) {
+        this.typevehicle = typevehicle;
     }
 
     public int getNumber() {
@@ -82,8 +114,8 @@ public class Parkingslot {
     public String toString() {
         return "Parkingslot{" +
                 "idparkinslot=" + idparkingslot +
-                ", idparking=" + idparking +
-                ", idtypevehicle=" + idtypevehicle +
+                ", idparking=" + parking +
+                ", idtypevehicle=" + typevehicle +
                 ", number=" + number +
                 ", preferentialslot=" + preferentialslot +
                 ", state=" + state +

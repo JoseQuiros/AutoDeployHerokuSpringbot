@@ -16,7 +16,7 @@ public class RolService {
     @Autowired
     private RolRepository repository;
 
-    public List<?> getAllRoles() { return repository.getAllRoles();
+    public List<Rol> getAllRoles() { return repository.getAllRoles();
     }
 
     //From the stored procedure

@@ -24,13 +24,18 @@ public class VehicleController {
     public List<?> getAllVehicles() { return service.getAllVehicles();
     }
     @GetMapping("/getVehicle/{id}")
-    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Integer id){ try {
-        Vehicle vehicle = service.getVehicleById(id);
-        return new ResponseEntity<Vehicle>(vehicle, HttpStatus.OK);
-    }catch(NoSuchElementException e){
-        return new ResponseEntity<Vehicle>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Integer id) {
+        try {
+            Vehicle vehicle = service.getVehicleById(id);
+            return new ResponseEntity<Vehicle>(vehicle, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Vehicle>(HttpStatus.NOT_FOUND);
+        }
     }
 
+    @GetMapping("/getVehicleByClient/{id}")
+    public List<Vehicle> getVehicleByClient(@PathVariable Integer id){
+        return service.getVehicleByClient(id);
     }
 
     @PostMapping("/saveVehicle")

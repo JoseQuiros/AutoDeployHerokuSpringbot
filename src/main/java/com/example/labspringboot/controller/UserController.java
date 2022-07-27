@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+
 @RestController
 @RequestMapping(path = "/api/user")
 @CrossOrigin
@@ -22,6 +23,16 @@ public class UserController {
     @GetMapping("/getAllUsers")
     public List<Users> getAllUsers() { return service.getAllUsers();
     }
+
+    @GetMapping("/login/{email}")
+    public ResponseEntity<Users> logIn(@PathVariable String email){ try {
+        Users user = service.logIn(email);
+        return new ResponseEntity<Users>(user, HttpStatus.OK);
+    }catch(NoSuchElementException e){
+        return new ResponseEntity<Users>(HttpStatus.NOT_FOUND);
+    }
+
+    }
     @GetMapping("/getUser/{id}")
     public ResponseEntity<Users> getUserById(@PathVariable Integer id){ try {
         Users user = service.getUserById(id);
@@ -31,17 +42,15 @@ public class UserController {
     }
 
     }
-
     @PostMapping("/saveUser")
-    public ResponseEntity<?> insertUser(@RequestBody Users user) {
-
-        service.insertUserSP(user);
+    public ResponseEntity<?> insertUser(@RequestBody Users user) { service.insertUserSP(user);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
 
     @PostMapping("/updateUser")
-    public void updateUser(@RequestBody Users user){ service.updateUserSP(user);
+    public void updateUser(@RequestBody Users user){
+        service.updateUserSP(user);
     }
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable int id) { service.deleteUserSP(id);

@@ -1,11 +1,11 @@
 package com.example.labspringboot.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Times")
+@NamedStoredProcedureQuery(name = "Times.getTimes", procedureName = "GetTimes")
+
 public class Times {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

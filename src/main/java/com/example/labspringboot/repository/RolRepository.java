@@ -14,7 +14,7 @@ import java.util.List;
 public interface RolRepository extends JpaRepository<Rol, Integer> {
 
     @Query(value = "GetAllRoles", nativeQuery = true)
-    List<?> getAllRoles();
+    List<Rol> getAllRoles();
 
     @Query(value = "{ call GetRol(:IDrol)}", nativeQuery = true)
     Rol getRol(@Param("IDrol") Integer id);

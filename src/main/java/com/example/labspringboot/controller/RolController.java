@@ -13,13 +13,14 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "/api/rol")
+@CrossOrigin
 public class RolController {
 
     @Autowired
     private RolService service;
 
     @GetMapping("/getAllRoles")
-    public List<?> getAllRoles() { return service.getAllRoles();
+    public List<Rol> getAllRoles() { return service.getAllRoles();
     }
     @GetMapping("/getRol/{id}")
     public ResponseEntity<Rol> getRolById(@PathVariable Integer id){ try {

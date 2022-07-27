@@ -15,13 +15,14 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "/api/parking")
+@CrossOrigin
 public class ParkingController {
 
     @Autowired
     private ParkingService service;
 
     @GetMapping("/getAllParkings")
-    public List<?> getAllParkings() { return service.getAllParkings();
+    public List<Parking> getAllParkings() { return service.getAllParkings();
     }
     @GetMapping("/getParking/{id}")
     public ResponseEntity<Parking> getParkingById(@PathVariable Integer id){ try {
@@ -39,7 +40,7 @@ public class ParkingController {
     }
 
 
-    @PostMapping("/updateFee")
+    @PostMapping("/updateParking")
     public void updateParking(@RequestBody Parking parking){ service.updateParkingSP(parking);
     }
     @DeleteMapping("/delete/{id}")

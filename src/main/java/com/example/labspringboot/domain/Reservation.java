@@ -1,11 +1,40 @@
 package com.example.labspringboot.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Reservation")
+@NamedStoredProcedureQuery(name = "Reservation.getAllReservations", procedureName = "GetAllReservation")
+
+@NamedStoredProcedureQuery(name = "Reservation.getReservationById",procedureName = "GetReservationById", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDreservation", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Reservation.getAllReservationsByClient",procedureName = "GetAllReservationsByClient", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@IDclient", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Reservation.insertReservation",procedureName = "InsertReservation", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparking", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDtime", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "SlotNumber", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDclient", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Date", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "CantTime", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Reservation.consultCost",procedureName = "consultCost", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparking", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDtime", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "SlotNumber", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDclient", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Date", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "CantTime", type = Integer.class)
+})
+
+@NamedStoredProcedureQuery(name = "Reservation.cancelReservation",procedureName = "cancelReservation", parameters =
+        {@StoredProcedureParameter(mode = ParameterMode.IN, name = "IDreservation", type = Integer.class)})
+
 public class Reservation {
 
     @Id

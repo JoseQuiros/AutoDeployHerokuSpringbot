@@ -16,7 +16,7 @@ public class ParkingService {
     @Autowired
     private ParkingRepository repository;
 
-    public List<?> getAllParkings() { return repository.getAllParkings();
+    public List<Parking> getAllParkings() { return repository.getAllParkings();
     }
 
     //From the stored procedure

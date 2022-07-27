@@ -24,6 +24,9 @@ public class VehicleService {
     public Vehicle getVehicleById(int id) { return repository.getVehicleById(id);
     }
 
+    public List<Vehicle> getVehicleByClient(int id) { return repository.getVehicleByClient(id);
+    }
+
     //From the stored procedure
     public void insertVehicleSP(Vehicle vehicle) { repository.insertVehicleSP(vehicle.getType().getIdtype(),
             vehicle.getBrand(), vehicle.getModel(), vehicle.getColor(), vehicle.getYear(), vehicle.getRegister(),

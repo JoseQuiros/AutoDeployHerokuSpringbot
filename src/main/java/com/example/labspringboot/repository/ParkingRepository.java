@@ -15,7 +15,7 @@ public interface ParkingRepository extends JpaRepository<Parking, Integer> {
 
 
     @Query(value = "GetAllParkings", nativeQuery = true)
-    List<?> getAllParkings();
+    List<Parking> getAllParkings();
 
     @Query(value = "{ call GetParking(:IDparking)}", nativeQuery = true)
     Parking getParkingById(@Param("IDparking") Integer id);

@@ -23,14 +23,18 @@ public class UserService {
     public Users getUserById(int id) { return repository.getUserById(id);
     }
 
+    public Users logIn(String email) {
+        return repository.logIn(email);
+    }
+
     //From the stored procedure
     public void insertUserSP(Users user) { repository.insertUserSP(user.getRol().getIdrol(), user.getName(), user.getDni(), user.getAge(),
             user.getTelephone(), user.getEmail(), user.getClave());
     }
 
     //From the stored procedure
-    public void updateUserSP(Users user) { repository.updateUserSP(user.getIduser(), user.getRol().getIdrol(), user.getName(), user.getDni(), user.getAge(),
-            user.getTelephone(), user.getEmail(), user.getClave());
+    public void updateUserSP(Users user) { repository.updateUserSP(user.getIduser(), user.getRol().getIdrol(), user.getName(),
+            user.getDni(), user.getAge(), user.getTelephone(), user.getEmail(), user.getClave());
     }
 
     //From the stored procedure
