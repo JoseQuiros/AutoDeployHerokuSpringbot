@@ -18,7 +18,7 @@ public class FeeService {
     @Autowired
     private FeeRepository repository;
 
-    public List<?> getAllFees() { return repository.getAllFees();
+    public List<Fee> getAllFees() { return repository.getAllFees();
     }
 
     //From the stored procedure

@@ -17,7 +17,7 @@ import javax.persistence.*;
 @NamedStoredProcedureQuery(name = "Reservation.insertReservation",procedureName = "InsertReservation", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparking", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDtime", type = Integer.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "SlotNumber", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDparkingslot", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "IDclient", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Date", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "CantTime", type = Integer.class)

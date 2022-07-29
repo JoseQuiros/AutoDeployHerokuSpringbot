@@ -23,7 +23,7 @@ public class FeeController {
     private FeeService service;
 
     @GetMapping("/getAllFees")
-    public List<?> getAllClient() { return service.getAllFees();
+    public List<Fee> getAllClient() { return service.getAllFees();
     }
     @GetMapping("/getFee/{id}")
     public ResponseEntity<Fee> getFeeById(@PathVariable Integer id){ try {

@@ -48,7 +48,8 @@ public class ReservationController {
     }
 
     @PostMapping("/saveReservation")
-    public ResponseEntity<?> insertReservation(@RequestBody Reservation reservation) { service.insertReservationSP(reservation);
+    public ResponseEntity<?> insertReservation(@RequestBody Reservation reservation) {
+        service.insertReservationSP(reservation);
         return new ResponseEntity(HttpStatus.CREATED);
     }
     @DeleteMapping("/cancel/{id}")

@@ -14,7 +14,7 @@ import java.util.List;
 public interface FeeRepository extends JpaRepository<Fee, Integer> {
 
     @Query(value = "GetAllFees", nativeQuery = true)
-    List<?> getAllFees();
+    List<Fee> getAllFees();
 
     @Query(value = "{ call GetFee(:IDfee)}", nativeQuery = true)
     Fee getFeeById(@Param("IDfee") Integer id);

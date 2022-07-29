@@ -25,7 +25,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
     @Procedure(name = "Reservation.insertReservation") void insertReservationSP(@Param("IDparking") int idParking ,
                                                                     @Param("IDtime") int idTime,
-                                                                    @Param("SlotNumber") int slotNumber,
+                                                                    @Param("IDparkingslot") int idParkingslot,
                                                                     @Param("IDclient") int idClient,
                                                                     @Param("Date") String date,
                                                                     @Param("CantTime") int contTime);
