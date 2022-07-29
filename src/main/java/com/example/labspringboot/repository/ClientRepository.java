@@ -14,7 +14,7 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     @Query(value = "GetAllClients", nativeQuery = true)
-    List<?> getAllClients();
+    List<Client> getAllClients();
 
     @Query(value = "{ call GetClient(:IDclient)}", nativeQuery = true)
     Client getClientById(@Param("IDclient") Integer id);

@@ -15,13 +15,14 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "/api/vehicle")
+@CrossOrigin
 public class VehicleController {
 
     @Autowired
     private VehicleService service;
 
     @GetMapping("/getAllVehicles")
-    public List<?> getAllVehicles() { return service.getAllVehicles();
+    public List<Vehicle> getAllVehicles() { return service.getAllVehicles();
     }
     @GetMapping("/getVehicle/{id}")
     public ResponseEntity<Vehicle> getVehicleById(@PathVariable Integer id) {
@@ -34,8 +35,13 @@ public class VehicleController {
     }
 
     @GetMapping("/getVehicleByClient/{id}")
-    public List<Vehicle> getVehicleByClient(@PathVariable Integer id){
-        return service.getVehicleByClient(id);
+    public ResponseEntity<Vehicle> getVehicleByClient(@PathVariable Integer id){
+        try {
+            Vehicle vehicle = service.getVehicleByClient(id);
+            return new ResponseEntity<Vehicle>(vehicle, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Vehicle>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/saveVehicle")

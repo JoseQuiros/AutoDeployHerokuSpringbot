@@ -17,14 +17,15 @@ public class VehicleService {
     @Autowired
     private VehicleRepository repository;
 
-    public List<?> getAllVehicles() { return repository.getAllVehicles();
+    public List<Vehicle> getAllVehicles() { return repository.getAllVehicles();
     }
 
     //From the stored procedure
     public Vehicle getVehicleById(int id) { return repository.getVehicleById(id);
     }
 
-    public List<Vehicle> getVehicleByClient(int id) { return repository.getVehicleByClient(id);
+    public Vehicle getVehicleByClient(int id)
+    { return repository.getVehicleByClient(id);
     }
 
     //From the stored procedure

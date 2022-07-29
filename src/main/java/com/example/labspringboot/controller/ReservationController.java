@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "/api/reservation")
+@CrossOrigin
 public class ReservationController {
 
     @Autowired

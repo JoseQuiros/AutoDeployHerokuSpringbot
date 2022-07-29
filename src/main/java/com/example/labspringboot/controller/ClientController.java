@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "/api/client")
+@CrossOrigin
 public class ClientController {
 
 
@@ -22,7 +23,7 @@ public class ClientController {
     private ClientService service;
 
     @GetMapping("/getAllClient")
-    public List<?> getAllClient() { return service.getAllClients();
+    public List<Client> getAllClient() { return service.getAllClients();
     }
     @GetMapping("/getClient/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Integer id){ try {
@@ -41,7 +42,8 @@ public class ClientController {
 
 
     @PostMapping("/updateClient")
-    public void updateClient(@RequestBody Client client){ service.updateClientSP(client);
+    public void updateClient(@RequestBody Client client){
+        service.updateClientSP(client);
     }
     @DeleteMapping("/delete/{id}")
     public void deleteClient(@PathVariable int id) { service.deleteClientSP(id);

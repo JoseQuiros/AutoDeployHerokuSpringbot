@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "/api/bill")
+@CrossOrigin
 public class BillController {
 
     @Autowired

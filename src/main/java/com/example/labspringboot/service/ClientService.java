@@ -19,7 +19,7 @@ public class ClientService {
     @Autowired
     private ClientRepository repository;
 
-    public List<?> getAllClients() { return repository.getAllClients();
+    public List<Client> getAllClients() { return repository.getAllClients();
     }
 
     //From the stored procedure
